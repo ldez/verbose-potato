@@ -16,11 +16,14 @@ jobs:
       - name: ref_name
         run: echo "ref_name=${{  github.ref_name }}"
 
-      - name: github.ref
-        run: echo "github.ref=${{  github.github.ref }}"
+      - name: major.minor
+        run: |
+          major=cut -d '.' -f 1 <<< "${{  github.github.ref_type }}"
+          minor=cut -d '.' -f 2 <<< "${{  github.github.ref_type }}"
+          cp foo/bar.txt foo/${major}.${minor}.bar.json
 
-      - name: github.ref_type
-        run: echo "github.ref_type=${{  github.github.ref_type }}"
+      - name: check
+        run: ls -alF foo
 
 #      - name: Create Pull Request
 #        uses: peter-evans/create-pull-request@v6
