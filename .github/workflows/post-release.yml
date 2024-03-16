@@ -21,8 +21,8 @@ jobs:
 
       - name: major.minor
         run: |
-          major=cut -d '.' -f 1 <<< "${{  github.ref_name }}"
-          minor=cut -d '.' -f 2 <<< "${{  github.ref_name }}"
+          major=$(cut -d '.' -f 1 <<< "${{  github.ref_name }}")
+          minor=$(cut -d '.' -f 2 <<< "${{  github.ref_name }}")
           cp foo/bar.txt foo/${major}.${minor}.bar.json
 
       - name: check
