@@ -16,6 +16,9 @@ jobs:
       - name: ref_name
         run: echo "ref_name=${{  github.ref_name }}"
 
+      - name: help
+        run: cut --help
+
       - name: major.minor
         run: |
           major=cut -d '.' -f 1 <<< "${{  github.ref_name }}"
