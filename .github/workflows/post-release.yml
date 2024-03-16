@@ -18,8 +18,8 @@ jobs:
 
       - name: major.minor
         run: |
-          major=cut -d '.' -f 1 <<< "${{  github.ref_type }}"
-          minor=cut -d '.' -f 2 <<< "${{  github.ref_type }}"
+          major=cut -d '.' -f 1 <<< "${{  github.ref_name }}"
+          minor=cut -d '.' -f 2 <<< "${{  github.ref_name }}"
           cp foo/bar.txt foo/${major}.${minor}.bar.json
 
       - name: check
