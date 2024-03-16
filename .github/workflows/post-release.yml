@@ -16,14 +16,11 @@ jobs:
       - name: ref_name
         run: echo "ref_name=${{  github.ref_name }}"
 
-      - name: help
-        run: cut --help
-
       - name: major.minor
         run: |
           major=$(cut -d '.' -f 1 <<< "${{  github.ref_name }}")
           minor=$(cut -d '.' -f 2 <<< "${{  github.ref_name }}")
-          cp foo/bar.txt foo/${major}.${minor}.bar.json
+          cp foo/bar.txt foo/golangci-lint.${major}.${minor}.jsonschema.json
 
       - name: check
         run: ls -alF foo
